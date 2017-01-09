@@ -12,7 +12,6 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-detail.component.css']
 })
 export class HeroDetailComponent implements OnInit {
-  @Input() // hero is a target that gets set from AppComponent
   hero: Hero;
 
   constructor(
