@@ -43,4 +43,15 @@ export class HeroesComponent implements OnInit {
         this.selectedHero = null;
       });
   }
+
+  // delegate hero deletion to the hero HeroService
+  // but the component is still responsible for updating the display
+  delete(hero: Hero): void {
+    this.heroService
+      .delete(hero.id)
+      .then(() => {
+        this.heroes = this.heroes.filter(h => h !== hero);
+        if (this.selectedHero === hero) { this.selectedHero = null; }
+      });
+  }
 }
