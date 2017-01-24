@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { MaterialModule } from '@angular/material';
 
 import './rxjs-extensions';
 
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { SelectedHeroDialog } from './heroes/heroes.component';
 
 @NgModule({
   declarations: [
@@ -23,17 +25,20 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     HeroDetailComponent,
     HeroesComponent,
     DashboardComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    SelectedHeroDialog
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService)
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    MaterialModule.forRoot()
   ],
   providers: [HeroService], // create a new HS when in creates a new AppComponent
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [SelectedHeroDialog]
 })
 export class AppModule { }
 
